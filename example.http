@@ -1,0 +1,75 @@
+@local=http://localhost:3000
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTA3MTcyODE4NTJiOTc1ZmE0ZDNmMzYiLCJiaXoiOnRydWUsIm5hbWUiOiJhZ3ZpaWkiLCJpYXQiOjE2OTQ5NjM1MzV9.Ntii6d3zAop5t2dNKKPYz91CVqKAECYeQw-mEyP1Cd4
+
+GET {{local}}/users/me
+
+x-auth-token: {{token}}
+
+
+### Create New User
+POST {{local}}/users
+Content-Type: application/json
+
+{
+    "name": "agviii", 
+    "email": "asgd@aa.com" , 
+    "password": "Afa1s23456",
+    "biz": true
+}
+
+
+
+### Authenticate (login)
+POST {{local}}/auth
+Content-Type: application/json
+
+{
+  "email": "asgd@aa.com",
+  "password": "Afa1s23456"
+}
+
+### get users information
+GET {{local}}/users/me
+x-auth-token: {{token}}
+
+
+
+#### create card
+POST {{local}}/cards
+x-auth-token: {{token}}
+Content-Type: application/json
+
+{
+  "bizName": "lemon",
+  "bizDescription": "lemons for all", 
+  "bizAddress": "lemon av.", 
+  "bizPhone": "034343434",
+  "bizImage": "http://cdn.pixabay.com/dafjdsklf"
+}
+
+
+### add to favorite
+PATCH {{local}}/users/cards
+x-auth-token: {{token}}
+Content-Type: application/json
+
+{
+  "cards": [445588679]
+}
+
+###
+DELETE {{local}}/users/64f461e9e07b45910d80eec9
+x-auth-token: {{token}}
+
+###
+PUT {{local}}/users/64f49e53c862297eb74b3db0
+x-auth-token: {{token}}
+Content-Type: application/json
+
+{
+    "name": "nnnnnnnnnn", 
+    "email": "nnn@nnnn.com" , 
+    "password": "Nn123456789",
+    "biz": false
+}
+
